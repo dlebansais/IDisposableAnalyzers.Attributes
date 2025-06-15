@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <Version>4.0.8.11</Version>
+    <AssemblyVersion>4.0.8.11</AssemblyVersion>
+    <FileVersion>4.0.8.11</FileVersion>
+    <RepositoryUrl>https://github.com/dlebansais/IDisposableAnalyzers</RepositoryUrl>
+    <Authors>David Le Bansais</Authors>
+    <Description>Attributes for dlebansais/IDisposableAnalyzer.</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(SolutionDir)'!='*Undefined*' And '$(TargetFramework)'=='netstandard2.0'">
+    <ItemGroup>
+      <None Remove="@(None)" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(Configuration)'=='Debug'">
+      <None Include="$(TargetDir)$(ProjectName).dll" />
+      <None Include="$(TargetDir)$(ProjectName).pdb" />
+      <None Include="$(TargetDir)$(ProjectName).xml" />
+    </ItemGroup>
+    <Copy SourceFiles="@(None)" DestinationFolder="$(SolutionDir)nuget-debug\lib\netstandard2.0\" Condition="'$(Configuration)'=='Debug'" />
+
+    <ItemGroup Condition="'$(Configuration)'=='Release'">
+      <None Include="$(TargetDir)$(ProjectName).dll" />
+      <None Include="$(TargetDir)$(ProjectName).xml" />
+    </ItemGroup>
+    <Copy SourceFiles="@(None)" DestinationFolder="$(SolutionDir)nuget\lib\netstandard2.0\" Condition="'$(Configuration)'=='Release'" />
+  </Target>
+
+</Project>
