@@ -4,13 +4,18 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <Version>4.0.8.11</Version>
-    <AssemblyVersion>4.0.8.11</AssemblyVersion>
-    <FileVersion>4.0.8.11</FileVersion>
+    <Version>4.0.8.13</Version>
+    <AssemblyVersion>4.0.8.13</AssemblyVersion>
+    <FileVersion>4.0.8.13</FileVersion>
     <RepositoryUrl>https://github.com/dlebansais/IDisposableAnalyzers</RepositoryUrl>
     <Authors>David Le Bansais</Authors>
-    <Description>Attributes for dlebansais/IDisposableAnalyzer.</Description>
+    <Description>Attributes for dlebansais/IDisposableAnalyzers.</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\IDisposableAnalyzers.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(SolutionDir)'!='*Undefined*' And '$(TargetFramework)'=='netstandard2.0'">
